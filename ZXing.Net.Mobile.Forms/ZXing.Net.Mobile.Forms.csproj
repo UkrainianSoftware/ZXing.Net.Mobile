@@ -77,8 +77,6 @@
 		<Compile Include="**\*.macos.*.cs" />
 	</ItemGroup>
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
-		<PackageReference Include="Tizen.NET" Version="8.0.0.15631"><PrivateAssets>All</PrivateAssets>
-</PackageReference>
 		<Compile Include="**\*.tizen.*.cs" />
 	</ItemGroup>
 	<ItemGroup>
