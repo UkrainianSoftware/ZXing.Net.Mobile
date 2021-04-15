@@ -580,9 +580,6 @@ namespace ZXing.Mobile
 				//  captureDevice.FlashMode = captureDeviceOriginalConfig.FlashMode;
 				//if (captureDevice.HasTorch)
 				//	captureDevice.TorchMode = captureDeviceOriginalConfig.TorchMode;
-				captureDevice.FlashMode = AVCaptureFlashMode.Off;
-				captureDevice.TorchMode = AVCaptureTorchMode.Off;
-
 
 				captureDevice.UnlockForConfiguration();
 			}

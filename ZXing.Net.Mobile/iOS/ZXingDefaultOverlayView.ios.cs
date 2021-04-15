@@ -121,8 +121,8 @@ namespace ZXing.Mobile
 
 			var hasTorch = false;
 
-			if (captureDevice != null)
-				hasTorch = captureDevice.TorchAvailable;
+			//if (captureDevice != null)
+			//	hasTorch = captureDevice.TorchAvailable;
 
 			InvokeOnMainThread(delegate
 			{
