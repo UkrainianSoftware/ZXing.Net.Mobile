@@ -575,10 +575,14 @@ namespace ZXing.Mobile
 				if (captureDevice.ExposurePointOfInterestSupported)
 					captureDevice.ExposurePointOfInterest = captureDeviceOriginalConfig.ExposurePointOfInterest;
 
-				if (captureDevice.HasFlash)
-					captureDevice.FlashMode = captureDeviceOriginalConfig.FlashMode;
-				if (captureDevice.HasTorch)
-					captureDevice.TorchMode = captureDeviceOriginalConfig.TorchMode;
+
+				//if (captureDevice.HasFlash)
+				//  captureDevice.FlashMode = captureDeviceOriginalConfig.FlashMode;
+				//if (captureDevice.HasTorch)
+				//	captureDevice.TorchMode = captureDeviceOriginalConfig.TorchMode;
+				captureDevice.FlashMode = AVCaptureFlashMode.Off;
+				captureDevice.TorchMode = AVCaptureTorchMode.Off;
+
 
 				captureDevice.UnlockForConfiguration();
 			}
@@ -613,41 +617,43 @@ namespace ZXing.Mobile
 
 		public void Torch(bool on)
 		{
-			try
-			{
-				var device = captureDevice ?? AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
-				if (device != null && (device.HasTorch || device.HasFlash))
-				{
-					device.LockForConfiguration(out var err);
+			return;
 
-					if (err != null)
-					{
-						if (on)
-						{
-							if (device.HasTorch)
-								device.TorchMode = AVCaptureTorchMode.On;
-							if (device.HasFlash)
-								device.FlashMode = AVCaptureFlashMode.On;
-						}
-						else
-						{
-							if (device.HasTorch)
-								device.TorchMode = AVCaptureTorchMode.Off;
-							if (device.HasFlash)
-								device.FlashMode = AVCaptureFlashMode.Off;
-						}
-					}
-
-					try
-					{
-						device.UnlockForConfiguration();
-					}
-					catch { }
-				}
-
-				torch = on;
-			}
-			catch { }
+			//try
+			//{
+			//	var device = captureDevice ?? AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
+			//	if (device != null && (device.HasTorch || device.HasFlash))
+			//	{
+			//		device.LockForConfiguration(out var err);
+			//
+			//		if (err != null)
+			//		{
+			//			if (on)
+			//			{
+			//				if (device.HasTorch)
+			//					device.TorchMode = AVCaptureTorchMode.On;
+			//				if (device.HasFlash)
+			//					device.FlashMode = AVCaptureFlashMode.On;
+			//			}
+			//			else
+			//			{
+			//				if (device.HasTorch)
+			//					device.TorchMode = AVCaptureTorchMode.Off;
+			//				if (device.HasFlash)
+			//					device.FlashMode = AVCaptureFlashMode.Off;
+			//			}
+			//		}
+			//
+			//		try
+			//		{
+			//			device.UnlockForConfiguration();
+			//		}
+			//		catch { }
+			//	}
+			//
+			//	torch = on;
+			//}
+			//catch { }
 		}
 
 		public void ToggleTorch()
@@ -673,18 +679,18 @@ namespace ZXing.Mobile
 		public bool IsTorchOn { get { return torch; } }
 
 		bool? hasTorch = null;
-		public bool HasTorch
-		{
-			get
-			{
-				if (hasTorch.HasValue)
-					return hasTorch.Value;
-
-				var device = captureDevice ?? AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
-				hasTorch = device.HasFlash || device.HasTorch;
-				return hasTorch.Value;
-			}
-		}
+		public bool HasTorch => false;
+		//{
+		//	get
+		//	{
+		//		if (hasTorch.HasValue)
+		//			return hasTorch.Value;
+		//
+		//		var device = captureDevice ?? AVCaptureDevice.DefaultDeviceWithMediaType(AVMediaType.Video);
+		//		hasTorch = device.HasFlash || device.HasTorch;
+		//		return hasTorch.Value;
+		//	}
+		//}
 		#endregion
 	}
 
