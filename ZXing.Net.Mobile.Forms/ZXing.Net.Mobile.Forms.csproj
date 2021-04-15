@@ -59,11 +59,7 @@
 	</ItemGroup>
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
 		<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.11" />
-		<Compile Include="**\*.uwp.cs" />
 		<Compile Include="**\*.uwp.*.cs" />
-		<SDKReference Include="WindowsMobile, Version=10.0.16299.0">
-			<Name>Windows Mobile Extensions for the UWP</Name>
-		</SDKReference>
 	</ItemGroup>
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
 		<Compile Include="**\*.android.cs" />
@@ -78,12 +74,11 @@
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
 		<Reference Include="Xamarin.Mac" />
 		<Reference Include="netstandard" />
-		<Compile Include="**\*.macos.cs" />
 		<Compile Include="**\*.macos.*.cs" />
 	</ItemGroup>
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
-		<PackageReference Include="Tizen.NET" Version="8.0.0.15631" />
-		<Compile Include="**\*.tizen.cs" />
+		<PackageReference Include="Tizen.NET" Version="8.0.0.15631"><PrivateAssets>All</PrivateAssets>
+</PackageReference>
 		<Compile Include="**\*.tizen.*.cs" />
 	</ItemGroup>
 	<ItemGroup>
@@ -93,5 +88,12 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\ZXing.Net.Mobile\ZXing.Net.Mobile.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Platform.uwp.cs" />
+	  <Compile Remove="Platform.macos.cs" />
+	  <Compile Remove="Platform.tizen.cs" />
+	  <Compile Remove="ZXingBarcodeImageViewRenderer.uwp.cs" />
+	  <Compile Remove="ZXingBarcodeImageViewRenderer.tizen.cs" />
 	</ItemGroup>
 </Project>
