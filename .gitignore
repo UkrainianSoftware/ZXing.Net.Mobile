@@ -47,3 +47,5 @@ tools/
 .DS_Store
 .vscode/
 
+ZXing.Net.Mobile/ZXing.Net.Mobile.Shared/ZXing.Net.Mobile.Shared.csproj.nuget.dgspec.json
+ZXing.Net.Mobile/ZXing.Net.Mobile.Shared/project.nuget.cache
