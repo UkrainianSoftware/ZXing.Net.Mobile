@@ -19,9 +19,9 @@ using ZXing;
 
 
 #if __ANDROID_29__
-using AndroidFragmentActvity = AndroidX.Fragment.App.FragmentActivity;
+  using AndroidFragmentActvity = AndroidX.Fragment.App.FragmentActivity;
 #else
-using AndroidFragmentActvity = Android.Support.V4.App.FragmentActivity;
+  using AndroidFragmentActvity = Android.Support.V4.App.FragmentActivity;
 #endif
 
 using System.Linq;
@@ -105,7 +105,10 @@ namespace ZXing.Mobile
 			scannerFragment.BottomText = BottomText;
 
 			SupportFragmentManager.BeginTransaction()
-				.Replace(ZxingMobileAndroidResource.Id.contentFrame, scannerFragment, "ZXINGFRAGMENT")
+				.Replace(
+					containerViewId: ZxingMobileAndroidResource.Id.contentFrame,
+					fragment: scannerFragment,
+					tag: "ZXINGFRAGMENT")
 				.Commit();
 
 			CancelRequestedHandler = CancelScan;
