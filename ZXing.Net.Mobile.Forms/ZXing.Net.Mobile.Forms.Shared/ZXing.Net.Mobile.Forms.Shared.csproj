@@ -27,8 +27,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\ZXingBarcodeImageView.shared.cs">
+      <Link>ZXingBarcodeImageView.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingDefaultOverlay.shared.cs">
+      <Link>ZXingDefaultOverlay.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingScannerPage.shared.cs">
+      <Link>ZXingScannerPage.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingScannerView.shared.cs">
+      <Link>ZXingScannerView.shared.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

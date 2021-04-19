@@ -118,10 +118,6 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\ZXing.Net.Mobile\ZXing.Net.Mobile.csproj" />
-	</ItemGroup>
-	
-	<ItemGroup>
 		<Reference Include="zxing">
 			<HintPath>..\ZXing.Net\zxing.dll</HintPath>
 		</Reference>

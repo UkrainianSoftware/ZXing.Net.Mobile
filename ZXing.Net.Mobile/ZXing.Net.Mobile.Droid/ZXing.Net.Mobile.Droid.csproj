@@ -16,7 +16,7 @@
     <Deterministic>True</Deterministic>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidUseAapt2>true</AndroidUseAapt2>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -46,9 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Android\BitmapRenderer.android.cs">
+      <Link>BitmapRenderer.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\BitmapWriter.android.cs">
+      <Link>BitmapWriter.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\FastJavaArrayEx.android.cs">
+      <Link>FastJavaArrayEx.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\FastJavaByteArrayYUVLuminanceSource.android.cs">
+      <Link>FastJavaByteArrayYUVLuminanceSource.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\MobileBarcodeScanner.android.cs">
+      <Link>MobileBarcodeScanner.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\Permissions.android.cs">
+      <Link>Permissions.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\PermissionsHandler.android.cs">
+      <Link>PermissionsHandler.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\ZxingActivity.android.cs">
+      <Link>ZxingActivity.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\ZxingOverlayView.android.cs">
+      <Link>ZxingOverlayView.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\ZXingScannerFragment.android.cs">
+      <Link>ZXingScannerFragment.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\ZXingSurfaceView.android.cs">
+      <Link>ZXingSurfaceView.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\CameraAccess\CameraEventsListener.android.cs">
+      <Link>CameraAccess\CameraEventsListener.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\CameraAccess\Torch.android.cs">
+      <Link>CameraAccess\Torch.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\CameraAccess\CameraController.android.cs">
+      <Link>CameraAccess\CameraController.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Android\CameraAccess\CameraAnalyzer.android.cs">
+      <Link>CameraAccess\CameraAnalyzer.android.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -61,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
+      <Project>{D5328D77-FCE1-4DBA-A5E1-4590098F4A43}</Project>
+      <Name>ZXing.Net.Mobile.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

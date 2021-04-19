@@ -27,8 +27,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\CameraResolution.shared.cs">
+      <Link>CameraResolution.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\IMobileBarcodeScanner.shared.cs">
+      <Link>IMobileBarcodeScanner.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\IScannerSessionHost.shared.cs">
+      <Link>IScannerSessionHost.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\IScannerView.shared.cs">
+      <Link>IScannerView.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\MobileBarcodeScanner.netstandard.cs">
+      <Link>MobileBarcodeScanner.netstandard.cs</Link>
+    </Compile>
+    <Compile Include="..\MobileBarcodeScanner.shared.cs">
+      <Link>MobileBarcodeScanner.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\MobileBarcodeScanningOptions.shared.cs">
+      <Link>MobileBarcodeScanningOptions.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\Performance.shared.cs">
+      <Link>Performance.shared.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

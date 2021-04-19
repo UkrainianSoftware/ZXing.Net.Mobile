@@ -40,8 +40,30 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Platform.ios.cs">
+      <Link>Platform.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingBarcodeImageViewRenderer.ios.cs">
+      <Link>ZXingBarcodeImageViewRenderer.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingScannerViewRenderer.ios.cs">
+      <Link>ZXingScannerViewRenderer.ios.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.iOS\ZXing.Net.Mobile.iOS.csproj">
+      <Project>{AAF2A174-19AB-4BA5-909B-DAD103DB6757}</Project>
+      <Name>ZXing.Net.Mobile.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
+      <Project>{D5328D77-FCE1-4DBA-A5E1-4590098F4A43}</Project>
+      <Name>ZXing.Net.Mobile.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZXing.Net.Mobile.Forms.Shared\ZXing.Net.Mobile.Forms.Shared.csproj">
+      <Project>{6CC7DB1D-FF53-438E-ADD2-8F3123564FAC}</Project>
+      <Name>ZXing.Net.Mobile.Forms.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

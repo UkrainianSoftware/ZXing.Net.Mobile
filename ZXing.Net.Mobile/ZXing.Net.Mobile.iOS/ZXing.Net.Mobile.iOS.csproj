@@ -40,8 +40,49 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\iOS\AVCaptureScannerView.ios.cs">
+      <Link>AVCaptureScannerView.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\AVCaptureScannerViewController.ios.cs">
+      <Link>AVCaptureScannerViewController.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\BarcodeWriter.ios.cs">
+      <Link>BarcodeWriter.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\BitmapRenderer.ios.cs">
+      <Link>BitmapRenderer.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\CVPixelBufferBGRA32LuminanceSource.ios.cs">
+      <Link>CVPixelBufferBGRA32LuminanceSource.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\IScannerViewController.ios.cs">
+      <Link>IScannerViewController.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\MobileBarcodeScanner.ios.cs">
+      <Link>MobileBarcodeScanner.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\RGBLuminanceSourceiOS.ios.cs">
+      <Link>RGBLuminanceSourceiOS.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\UIImageBarcodeReader.ios.cs">
+      <Link>UIImageBarcodeReader.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\ZXingDefaultOverlayView.ios.cs">
+      <Link>ZXingDefaultOverlayView.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\ZXingScannerView.ios.cs">
+      <Link>ZXingScannerView.ios.cs</Link>
+    </Compile>
+    <Compile Include="..\iOS\ZXingScannerViewController.ios.cs">
+      <Link>ZXingScannerViewController.ios.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
+      <Project>{D5328D77-FCE1-4DBA-A5E1-4590098F4A43}</Project>
+      <Name>ZXing.Net.Mobile.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
