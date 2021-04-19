@@ -15,19 +15,29 @@ using Android.Runtime;
 using Android.Widget;
 
 using ZXing;
-//#if __ANDROID_29__
-using AndroidX.Fragment.App;
-//#else
-//using Android.Support.V4.App;
-//#endif
+
+
+
+#if __ANDROID_29__
+using AndroidFragmentActvity = AndroidX.Fragment.App.FragmentActivity;
+#else
+using AndroidFragmentActvity = Android.Support.V4.App.FragmentActivity;
+#endif
 
 using System.Linq;
 using System.Threading.Tasks;
 
+
+#if __FORK_FOR_ORION__
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+#else
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+#endif
+
 namespace ZXing.Mobile
 {
 	[Activity(Label = "Scanner", ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.ScreenLayout)]
-	public class ZxingActivity : FragmentActivity
+	public class ZxingActivity : AndroidFragmentActvity
 	{
 		public static readonly string[] RequiredPermissions = new[] {
 			Android.Manifest.Permission.Camera,
@@ -76,6 +86,8 @@ namespace ZXing.Mobile
 		{
 			base.OnCreate(bundle);
 
+			
+
 			RequestWindowFeature(WindowFeatures.NoTitle);
 
 			Window.AddFlags(WindowManagerFlags.Fullscreen); //to show
@@ -84,7 +96,7 @@ namespace ZXing.Mobile
 			if (ScanningOptions.AutoRotate.HasValue && !ScanningOptions.AutoRotate.Value)
 				RequestedOrientation = ScreenOrientation.Nosensor;
 
-			SetContentView(ZXing.Net.Mobile.Resource.Layout.zxingscanneractivitylayout);
+			SetContentView(ZxingMobileAndroidResource.Layout.zxingscanneractivitylayout);
 
 			scannerFragment = new ZXingScannerFragment();
 			scannerFragment.CustomOverlayView = CustomOverlayView;
@@ -93,7 +105,7 @@ namespace ZXing.Mobile
 			scannerFragment.BottomText = BottomText;
 
 			SupportFragmentManager.BeginTransaction()
-				.Replace(ZXing.Net.Mobile.Resource.Id.contentFrame, scannerFragment, "ZXINGFRAGMENT")
+				.Replace(ZxingMobileAndroidResource.Id.contentFrame, scannerFragment, "ZXINGFRAGMENT")
 				.Commit();
 
 			CancelRequestedHandler = CancelScan;

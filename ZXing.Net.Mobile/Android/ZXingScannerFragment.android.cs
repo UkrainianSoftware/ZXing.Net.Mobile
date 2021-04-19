@@ -2,11 +2,20 @@ using System;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-#if __ANDROID_29__
+
+//#if __ANDROID_29__
 using AndroidX.Fragment.App;
+//#else
+//using Android.Support.V4.App;
+//#endif
+
+
+#if __FORK_FOR_ORION__
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
 #else
-using Android.Support.V4.App;
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
 #endif
+
 
 namespace ZXing.Mobile
 {
@@ -21,7 +30,7 @@ namespace ZXing.Mobile
 
 		public override View OnCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle)
 		{
-			frame = (FrameLayout)layoutInflater.Inflate(ZXing.Net.Mobile.Resource.Layout.zxingscannerfragmentlayout, viewGroup, false);
+			frame = (FrameLayout)layoutInflater.Inflate(ZxingMobileAndroidResource.Layout.zxingscannerfragmentlayout, viewGroup, false);
 
 			var layoutParams = GetChildLayoutParams();
 
