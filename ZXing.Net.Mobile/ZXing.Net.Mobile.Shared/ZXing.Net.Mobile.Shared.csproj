@@ -24,6 +24,12 @@
     <Compile Include="..\Performance.shared.cs">
       <Link>Performance.shared.cs</Link>
     </Compile>
+    <Compile Include="..\IScannerSessionHost.shared.cs">
+      <Link>IScannerSessionHost.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\IScannerView.shared.cs">
+      <Link>IScannerView.shared.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="zxing">
