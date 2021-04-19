@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
-      <Project>{D5328D77-FCE1-4DBA-A5E1-4590098F4A43}</Project>
+      <Project>{AEEF21CA-F2FF-4D45-A266-87E674C2AE25}</Project>
       <Name>ZXing.Net.Mobile.Shared</Name>
     </ProjectReference>
   </ItemGroup>

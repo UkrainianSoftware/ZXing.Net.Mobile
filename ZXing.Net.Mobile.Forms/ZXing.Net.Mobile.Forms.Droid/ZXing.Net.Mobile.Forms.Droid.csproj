@@ -75,17 +75,17 @@
     <Folder Include="Resources\values\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZXing.Net.Mobile.Forms.Shared\ZXing.Net.Mobile.Forms.Shared.csproj">
-      <Project>{6CC7DB1D-FF53-438E-ADD2-8F3123564FAC}</Project>
-      <Name>ZXing.Net.Mobile.Forms.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
-      <Project>{D5328D77-FCE1-4DBA-A5E1-4590098F4A43}</Project>
-      <Name>ZXing.Net.Mobile.Shared</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Droid\ZXing.Net.Mobile.Droid.csproj">
       <Project>{E7BD090C-3855-4525-8385-5743A35F45BD}</Project>
       <Name>ZXing.Net.Mobile.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
+      <Project>{AEEF21CA-F2FF-4D45-A266-87E674C2AE25}</Project>
+      <Name>ZXing.Net.Mobile.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZXing.Net.Mobile.Forms.Shared\ZXing.Net.Mobile.Forms.Shared.csproj">
+      <Project>{9A8CCA9C-2C2A-4F7F-BB99-486FF5B3A129}</Project>
+      <Name>ZXing.Net.Mobile.Forms.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
