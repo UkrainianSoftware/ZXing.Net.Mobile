@@ -5,6 +5,15 @@ namespace ZXing.Mobile
 {
 	public partial class MobileBarcodeScanner : MobileBarcodeScannerBase
 	{
+		// TODO: [alex-d] [xm-899] Need to redirect these calls to a proper native class
+		//		 does not happen automatically when `partial class` parts are ...
+		//		 are in different `.csproj` (and hence `.dll`)
+		// ---
+		// Need to inject
+        // 1. platform implementation in default constructor
+		// 2. a static factory to get [1] done without changing public API
+		// -
+
 		public override Task<Result> Scan(MobileBarcodeScanningOptions options)
 			=> PlatformScan(options);
 
