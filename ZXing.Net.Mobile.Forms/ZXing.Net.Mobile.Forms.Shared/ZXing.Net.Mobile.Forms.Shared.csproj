@@ -27,4 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+  </ItemGroup>
 </Project>
