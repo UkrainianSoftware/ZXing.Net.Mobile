@@ -6,12 +6,18 @@
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__</DefineConstants>
   </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType></DebugType>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__;</DefineConstants>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__</DefineConstants>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="true">
+    <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\ZXingBarcodeImageView.shared.cs">
       <Link>ZXingBarcodeImageView.shared.cs</Link>
