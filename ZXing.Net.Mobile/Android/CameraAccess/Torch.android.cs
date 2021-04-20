@@ -2,6 +2,16 @@
 using Android.Content.PM;
 using Android.Hardware;
 
+
+#if __FORK_FOR_ORION__
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.Droid.MobileBarcodeScannerDroid;
+#else
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
+
 namespace ZXing.Mobile.CameraAccess
 {
 	public class Torch
@@ -25,13 +35,13 @@ namespace ZXing.Mobile.CameraAccess
 
 				if (!context.PackageManager.HasSystemFeature(PackageManager.FeatureCameraFlash))
 				{
-					Android.Util.Log.Info(MobileBarcodeScanner.TAG, "Flash not supported on this device");
+					Android.Util.Log.Info(MobileBarcodeScannerForDroidPlatform.TAG, "Flash not supported on this device");
 					return false;
 				}
 
 				if (cameraController.Camera == null)
 				{
-					Android.Util.Log.Info(MobileBarcodeScanner.TAG, "Run camera first");
+					Android.Util.Log.Info(MobileBarcodeScannerForDroidPlatform.TAG, "Run camera first");
 					return false;
 				}
 
@@ -62,7 +72,7 @@ namespace ZXing.Mobile.CameraAccess
 
 			if (cameraController.Camera == null)
 			{
-				Android.Util.Log.Info(MobileBarcodeScanner.TAG, "NULL Camera, cannot toggle torch");
+				Android.Util.Log.Info(MobileBarcodeScannerForDroidPlatform.TAG, "NULL Camera, cannot toggle torch");
 				return;
 			}
 

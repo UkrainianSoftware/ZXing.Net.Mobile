@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid90;MonoAndroid10.0;tizen40</TargetFrameworks>
 		<TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">$(TargetFrameworks);uap10.0.16299;</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;Xamarin.iOS10;MonoAndroid10.0</TargetFrameworks>
 		<AssemblyName>ZXingNetMobile</AssemblyName>
 		<RootNamespace>ZXing.Net.Mobile</RootNamespace>
 		<PackageId>ZXing.Net.Mobile</PackageId>
@@ -37,6 +38,8 @@
 	<PropertyGroup Condition=" '$(Configuration)'=='Debug' ">
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
+
+
 	<PropertyGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
 		<!-- sourcelink: Declare that the Repository URL can be published to NuSpec -->
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -45,21 +48,27 @@
 		<!-- sourcelink: Include PDB in the built .nupkg -->
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
+	
+
 	<ItemGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 	</ItemGroup>
+	
+
 	<ItemGroup>
 		<None Include="..\Art\ZXing.Net.Mobile-Icon.png" PackagePath="icon.png" Pack="true" />
 		<Compile Include="**\*.shared.cs" />
 		<Compile Include="**\*.shared.*.cs" />
 	</ItemGroup>
+
+
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
 		<Compile Include="**\*.netstandard.cs" />
 		<Compile Include="**\*.netstandard.*.cs" />
 	</ItemGroup>
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('uap10.0')) ">
 		<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
-		<Compile Include="**\*.uwp.cs" />
+		<PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.11" />
 		<Compile Include="**\*.uwp.*.cs" />
 		<Compile Include="ScanPage.xaml.cs">
 			<DependentUpon>ScanPage.xaml</DependentUpon>
@@ -78,10 +87,15 @@
 		<None Update="ZXingScannerControl.xaml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
-		<SDKReference Include="WindowsMobile, Version=10.0.16299.0">
-			<Name>Windows Mobile Extensions for the UWP</Name>
-		</SDKReference>
 	</ItemGroup>
+
+
+
+
+
+
+
+
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
 		<Compile Include="**\*.android.cs" />
 		<Compile Include="**\*.android.*.cs" />
@@ -96,6 +110,10 @@
 	<ItemGroup Condition="'$(TargetFramework)' == 'MonoAndroid10.0'">
 		<PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.1.0" />
 	</ItemGroup>
+
+
+
+
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
 		<Compile Include="**\*.ios.cs" />
 		<Compile Include="**\*.ios.*.cs" />
@@ -103,14 +121,20 @@
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
 		<Reference Include="Xamarin.Mac" />
 		<Reference Include="netstandard" />
-		<Compile Include="**\*.macos.cs" />
 		<Compile Include="**\*.macos.*.cs" />
 	</ItemGroup>
 	<ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
-		<PackageReference Include="Tizen.NET" Version="5.0.0.14562" />
-		<Compile Include="**\*.tizen.cs" />
+		<PackageReference Include="Tizen.NET" Version="5.0.0.14562"><PrivateAssets>All</PrivateAssets>
+</PackageReference>
+		<PackageReference Include="Tizen.NET" Version="8.0.0.15631"><PrivateAssets>All</PrivateAssets>
+</PackageReference>
 		<Compile Include="**\*.tizen.*.cs" />
 	</ItemGroup>
+	
+
+
+
+
 	<ItemGroup>
 		<PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
 	</ItemGroup>

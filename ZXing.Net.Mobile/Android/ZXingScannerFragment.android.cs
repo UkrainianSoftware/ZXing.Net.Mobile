@@ -2,11 +2,22 @@ using System;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+
 #if __ANDROID_29__
-using AndroidX.Fragment.App;
+  using AndroidX.Fragment.App;
 #else
-using Android.Support.V4.App;
+  using Android.Support.V4.App;
 #endif
+
+
+#if __FORK_FOR_ORION__
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.Droid.MobileBarcodeScannerDroid;
+#else
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
 
 namespace ZXing.Mobile
 {
@@ -21,7 +32,7 @@ namespace ZXing.Mobile
 
 		public override View OnCreateView(LayoutInflater layoutInflater, ViewGroup viewGroup, Bundle bundle)
 		{
-			frame = (FrameLayout)layoutInflater.Inflate(ZXing.Net.Mobile.Resource.Layout.zxingscannerfragmentlayout, viewGroup, false);
+			frame = (FrameLayout)layoutInflater.Inflate(ZxingMobileAndroidResource.Layout.zxingscannerfragmentlayout, viewGroup, false);
 
 			var layoutParams = GetChildLayoutParams();
 
@@ -50,7 +61,7 @@ namespace ZXing.Mobile
 				Console.WriteLine("Create Surface View Failed: " + ex);
 			}
 
-			Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "ZXingScannerFragment->OnResume exit");
+			Android.Util.Log.Debug(MobileBarcodeScannerForDroidPlatform.TAG, "ZXingScannerFragment->OnResume exit");
 
 			return frame;
 		}

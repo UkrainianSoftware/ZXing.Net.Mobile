@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="true">
+    <DefineConstants>TRACE;NETSTANDARD;NETSTANDARD2_0;__FORK_FOR_ORION__</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\ZXingBarcodeImageView.shared.cs">
+      <Link>ZXingBarcodeImageView.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingDefaultOverlay.shared.cs">
+      <Link>ZXingDefaultOverlay.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingScannerPage.shared.cs">
+      <Link>ZXingScannerPage.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingScannerView.shared.cs">
+      <Link>ZXingScannerView.shared.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="zxing">
+      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+  </ItemGroup>
+</Project>

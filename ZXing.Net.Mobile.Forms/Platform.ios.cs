@@ -8,6 +8,11 @@ namespace ZXing.Net.Mobile.Forms.iOS
 		{
 			ZXing.Net.Mobile.Forms.iOS.ZXingScannerViewRenderer.Init();
 			ZXing.Net.Mobile.Forms.iOS.ZXingBarcodeImageViewRenderer.Init();
+
+#if __FORK_FOR_ORION__
+			ZXing.Mobile.MobileBarcodeScanner.PlatformScannerFactory =
+				new ZXing.Mobile.Ios.MobileBarcodeScannerFactoryIos();
+#endif
 		}
 	}
 }

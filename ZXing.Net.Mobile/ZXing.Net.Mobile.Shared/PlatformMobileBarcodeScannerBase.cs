@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+
 namespace ZXing.Mobile
 {
-	public partial class MobileBarcodeScanner : MobileBarcodeScannerBase
+    public abstract class PlatformMobileBarcodeScannerBase : MobileBarcodeScannerBase
 	{
-		// TODO: [alex-d] [xm-899] Need to redirect these calls to a proper native class
-		//		 does not happen automatically when `partial class` parts are ...
-		//		 are in different `.csproj` (and hence `.dll`)
-		// ---
-		// Need to inject
-        // 1. platform implementation in default constructor
-		// 2. a static factory to get [1] done without changing public API
-		// -
-
 		public override Task<Result> Scan(MobileBarcodeScanningOptions options)
 			=> PlatformScan(options);
 
@@ -40,5 +32,22 @@ namespace ZXing.Mobile
 
 		public override bool IsTorchOn
 			=> PlatformIsTorchOn;
+
+
+
+		// Note: [alex-d] it's internal in zxing but...
+		//       need to change that due to build error
+		// ---
+		// virtual or abstract methods cannot be private
+		// -
+		public abstract Task<Result> PlatformScan(MobileBarcodeScanningOptions options);
+		public abstract void PlatformScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler);
+		public abstract void PlatformCancel();
+		public abstract void PlatformAutoFocus();
+		public abstract void PlatformTorch(bool on);
+		public abstract void PlatformToggleTorch();
+		public abstract void PlatformPauseAnalysis();
+		public abstract void PlatformResumeAnalysis();
+		public abstract bool PlatformIsTorchOn { get; }
 	}
 }

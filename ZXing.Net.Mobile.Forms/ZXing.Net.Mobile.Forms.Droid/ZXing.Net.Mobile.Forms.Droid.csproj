@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9FADB219-67AB-4794-A325-5DD08C799ADA}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{9ef11e43-1701-4396-8835-8392d57abb70}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZXing.Net.Mobile.Forms.Droid</RootNamespace>
+    <AssemblyName>ZXing.Net.Mobile.Forms.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>True</Deterministic>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+  </PropertyGroup>
+
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;__FORK_FOR_ORION__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;__FORK_FOR_ORION__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  
+
+
+<PropertyGroup Condition="true">
+    <DefineConstants>TRACE;__FORK_FOR_ORION__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\PermissionsHandler.android.cs">
+      <Link>PermissionsHandler.android.cs</Link>
+    </Compile>
+    <Compile Include="..\Platform.android.cs">
+      <Link>Platform.android.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingBarcodeImageViewRenderer.android.cs">
+      <Link>ZXingBarcodeImageViewRenderer.android.cs</Link>
+    </Compile>
+    <Compile Include="..\ZXingScannerViewRenderer.android.cs">
+      <Link>ZXingScannerViewRenderer.android.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>4.8.0.1821</Version>
+    </PackageReference>
+    <PackageReference Include="NuGet.Build.Packaging">
+      <Version>0.2.2</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="NuGet.Packaging">
+      <Version>5.6.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\values\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Droid\ZXing.Net.Mobile.Droid.csproj">
+      <Project>{E7BD090C-3855-4525-8385-5743A35F45BD}</Project>
+      <Name>ZXing.Net.Mobile.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
+      <Project>{AEEF21CA-F2FF-4D45-A266-87E674C2AE25}</Project>
+      <Name>ZXing.Net.Mobile.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZXing.Net.Mobile.Forms.Shared\ZXing.Net.Mobile.Forms.Shared.csproj">
+      <Project>{9A8CCA9C-2C2A-4F7F-BB99-486FF5B3A129}</Project>
+      <Name>ZXing.Net.Mobile.Forms.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\zxingscanneractivitylayout.axml">
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\zxingscannerfragmentlayout.axml">
+    </AndroidResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

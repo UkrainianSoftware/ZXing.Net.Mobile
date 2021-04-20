@@ -4,11 +4,18 @@ using Android.Content;
 using ZXing;
 using Android.OS;
 
+
+#if __FORK_FOR_ORION__
+namespace ZXing.Mobile.Droid
+{ 
+	public class MobileBarcodeScannerDroid : PlatformMobileBarcodeScannerBase
+	{
+#else
 namespace ZXing.Mobile
 {
-
 	public partial class MobileBarcodeScanner : MobileBarcodeScannerBase
 	{
+#endif
 		public const string TAG = "ZXing.Net.Mobile";
 
 		[Obsolete("Use Xamarin.Essentials.Platform.Init instead")]
@@ -27,7 +34,10 @@ namespace ZXing.Mobile
 		Context GetContext(Context context)
 			=> Xamarin.Essentials.Platform.CurrentActivity ?? Xamarin.Essentials.Platform.AppContext;
 
-		internal void PlatformScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
 			=> ScanContinuously(null, options, scanHandler);
 
 		public void ScanContinuously(Context context, MobileBarcodeScanningOptions options, Action<Result> scanHandler)
@@ -50,7 +60,10 @@ namespace ZXing.Mobile
 			ctx.StartActivity(scanIntent);
 		}
 
-		internal Task<Result> PlatformScan(MobileBarcodeScanningOptions options)
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		Task<Result> PlatformScan(MobileBarcodeScanningOptions options)
 			=> Scan(null, options);
 
 		public Task<Result> Scan(Context context, MobileBarcodeScanningOptions options)
@@ -93,31 +106,55 @@ namespace ZXing.Mobile
 			return task;
 		}
 
-		internal void PlatformCancel()
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformCancel()
 			=> ZxingActivity.RequestCancel();
 
-		internal void PlatformAutoFocus()
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformAutoFocus()
 			=> ZxingActivity.RequestAutoFocus();
 
-		internal void PlatformTorch(bool on)
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformTorch(bool on)
 		{
 			torch = on;
 			ZxingActivity.RequestTorch(on);
 		}
 
-		internal void PlatformToggleTorch()
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformToggleTorch()
 			=> Torch(!torch);
 
-		internal void PlatformPauseAnalysis()
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformPauseAnalysis()
 			=> ZxingActivity.RequestPauseAnalysis();
 
-		internal void PlatformResumeAnalysis()
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		void PlatformResumeAnalysis()
 			=> ZxingActivity.RequestResumeAnalysis();
 
-		internal bool PlatformIsTorchOn
+#if __FORK_FOR_ORION__
+		public override
+#endif
+		bool PlatformIsTorchOn
 			=> torch;
 
-		internal static void LogDebug(string format, params object[] args)
+        internal static void LogDebug(string format, params object[] args)
 			=> Android.Util.Log.Debug("ZXING", format, args);
 
 		internal static void LogError(string format, params object[] args)

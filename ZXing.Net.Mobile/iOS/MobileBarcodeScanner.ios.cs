@@ -6,27 +6,63 @@ using Foundation;
 using CoreFoundation;
 using UIKit;
 
+
+
+#if __FORK_FOR_ORION__
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.Ios.MobileBarcodeScannerIos;
+#else
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
+
+
+#if __FORK_FOR_ORION__
+namespace ZXing.Mobile.Ios
+{
+	public class MobileBarcodeScannerIos : PlatformMobileBarcodeScannerBase
+	{
+		public MobileBarcodeScannerIos(UIViewController delegateController)
+		{
+			weakAppController = new WeakReference<UIViewController>(delegateController);
+		}
+
+		public MobileBarcodeScannerIos()
+		{
+			weakAppController = new WeakReference<UIViewController>(
+				Xamarin.Essentials.Platform.GetCurrentUIViewController());
+		}
+
+#else
 namespace ZXing.Mobile
 {
 	public partial class MobileBarcodeScanner : MobileBarcodeScannerBase
 	{
-		IScannerViewController viewController;
-		readonly WeakReference<UIViewController> weakAppController;
-		readonly ManualResetEvent scanResultResetEvent = new ManualResetEvent(false);
-
 		public MobileBarcodeScanner(UIViewController delegateController)
 			=> weakAppController = new WeakReference<UIViewController>(delegateController);
 
 		public MobileBarcodeScanner()
 			=> weakAppController = new WeakReference<UIViewController>(Xamarin.Essentials.Platform.GetCurrentUIViewController());
+#endif
+
+		IScannerViewController viewController;
+		readonly WeakReference<UIViewController> weakAppController;
+		readonly ManualResetEvent scanResultResetEvent = new ManualResetEvent(false);
+
 
 		public Task<Result> Scan(bool useAVCaptureEngine)
 			=> Scan(new MobileBarcodeScanningOptions(), useAVCaptureEngine);
 
 
+#if __FORK_FOR_ORION__
+	    public override
+#endif
 		Task<Result> PlatformScan(MobileBarcodeScanningOptions options)
 			=> Scan(options, false);
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
 			=> InternalScanContinuously(options, false, scanHandler);
 
@@ -170,6 +206,10 @@ namespace ZXing.Mobile
 			}
 		});
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformCancel()
 		{
 			if (viewController != null)
@@ -186,23 +226,47 @@ namespace ZXing.Mobile
 			scanResultResetEvent.Set();
 		}
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformTorch(bool on)
 			=> viewController?.Torch(on);
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformToggleTorch()
 			=> viewController?.ToggleTorch();
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformAutoFocus()
 		{
 			//Does nothing on iOS
 		}
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformPauseAnalysis()
 			=> viewController?.PauseAnalysis();
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformResumeAnalysis()
 			=> viewController?.ResumeAnalysis();
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		bool PlatformIsTorchOn
 			=> viewController.IsTorchOn;
 

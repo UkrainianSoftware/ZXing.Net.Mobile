@@ -10,6 +10,14 @@ using CoreGraphics;
 
 using ZXing;
 
+
+#if __FORK_FOR_ORION__
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.Ios.MobileBarcodeScannerIos;
+#else
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
+
 namespace ZXing.Mobile
 {
 	public class AVCaptureScannerViewController : UIViewController, IScannerViewController
@@ -19,13 +27,21 @@ namespace ZXing.Mobile
 		public event Action<ZXing.Result> OnScannedResult;
 
 		public MobileBarcodeScanningOptions ScanningOptions { get; set; }
-		public MobileBarcodeScanner Scanner { get; set; }
+
+
+		// TODO: [alex-d] [xm-899] is it ok to replace this class?
+		// -
+		public MobileBarcodeScannerForIosPlatform Scanner { get; set; }
+
+
 		public bool ContinuousScanning { get; set; }
 
 		UIActivityIndicatorView loadingView;
 		UIView loadingBg;
 
-		public AVCaptureScannerViewController(MobileBarcodeScanningOptions options, MobileBarcodeScanner scanner)
+		public AVCaptureScannerViewController(
+			MobileBarcodeScanningOptions options,
+			MobileBarcodeScannerForIosPlatform scanner)
 		{
 			ScanningOptions = options;
 			Scanner = scanner;
@@ -155,17 +171,17 @@ namespace ZXing.Mobile
 		//		if (loadingView != null && loadingBg != null && loadingView.IsAnimating)
 		//		{
 		//			loadingView.StopAnimating();
-
+		//
 		//			UIView.BeginAnimations("zoomout");
-
+		//
 		//			UIView.SetAnimationDuration(2.0f);
 		//			UIView.SetAnimationCurve(UIViewAnimationCurve.EaseOut);
-
+		//
 		//			loadingBg.Transform = CGAffineTransform.MakeScale(2.0f, 2.0f);
 		//			loadingBg.Alpha = 0.0f;
-
+		//
 		//			UIView.CommitAnimations();
-
+		//
 		//			loadingBg.RemoveFromSuperview();
 		//		}
 		//	});
