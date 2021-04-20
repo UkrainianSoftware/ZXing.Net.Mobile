@@ -6,6 +6,16 @@ using Foundation;
 using CoreFoundation;
 using UIKit;
 
+
+
+#if __FORK_FOR_ORION__
+	using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.Ios.MobileBarcodeScannerIos;
+#else
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
+
+
 #if __FORK_FOR_ORION__
 namespace ZXing.Mobile.Ios
 {

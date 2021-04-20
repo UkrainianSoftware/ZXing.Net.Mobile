@@ -10,6 +10,17 @@ using CoreGraphics;
 
 using ZXing;
 
+
+
+#if __FORK_FOR_ORION__
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.Ios.MobileBarcodeScannerIos;
+#else
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
+
+
+
 namespace ZXing.Mobile
 {
 	public class ZXingScannerViewController : UIViewController, IScannerViewController
@@ -19,7 +30,7 @@ namespace ZXing.Mobile
 		public event Action<ZXing.Result> OnScannedResult;
 
 		public MobileBarcodeScanningOptions ScanningOptions { get; set; }
-		public MobileBarcodeScanner Scanner { get; set; }
+		public MobileBarcodeScannerForIosPlatform Scanner { get; set; }
 		public bool ContinuousScanning { get; set; }
 
 		UIActivityIndicatorView loadingView;
@@ -27,7 +38,9 @@ namespace ZXing.Mobile
 
 		public UIView CustomLoadingView { get; set; }
 
-		public ZXingScannerViewController(MobileBarcodeScanningOptions options, MobileBarcodeScanner scanner)
+		public ZXingScannerViewController(
+			MobileBarcodeScanningOptions options,
+			MobileBarcodeScannerForIosPlatform scanner)
 		{
 			ScanningOptions = options;
 			Scanner = scanner;
