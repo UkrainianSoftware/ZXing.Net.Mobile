@@ -12,8 +12,10 @@ using Android.Widget;
 
 #if __FORK_FOR_ORION__
   using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.Droid.MobileBarcodeScannerDroid;
 #else
   using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.MobileBarcodeScanner;
 #endif
 
 
@@ -59,7 +61,7 @@ namespace ZXing.Mobile
 				Console.WriteLine("Create Surface View Failed: " + ex);
 			}
 
-			Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "ZXingScannerFragment->OnResume exit");
+			Android.Util.Log.Debug(MobileBarcodeScannerForDroidPlatform.TAG, "ZXingScannerFragment->OnResume exit");
 
 			return frame;
 		}

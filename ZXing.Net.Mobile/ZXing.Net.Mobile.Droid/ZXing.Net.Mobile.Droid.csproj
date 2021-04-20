@@ -96,9 +96,6 @@
     <Compile Include="..\Android\CameraAccess\CameraAnalyzer.android.cs">
       <Link>CameraAccess\CameraAnalyzer.android.cs</Link>
     </Compile>
-    <Compile Include="..\MobileBarcodeScanner.shared.cs">
-      <Link>MobileBarcodeScanner.shared.cs</Link>
-    </Compile>
     <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
   <ItemGroup>

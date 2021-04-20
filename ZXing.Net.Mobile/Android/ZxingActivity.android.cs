@@ -30,8 +30,10 @@ using System.Threading.Tasks;
 
 #if __FORK_FOR_ORION__
   using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.Droid.MobileBarcodeScannerDroid;
 #else
   using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.MobileBarcodeScanner;
 #endif
 
 namespace ZXing.Mobile
@@ -144,7 +146,7 @@ namespace ZXing.Mobile
 		{
 			base.OnConfigurationChanged(newConfig);
 
-			Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "Configuration Changed");
+			Android.Util.Log.Debug(MobileBarcodeScannerForDroidPlatform.TAG, "Configuration Changed");
 		}
 
 		public void SetTorch(bool on)

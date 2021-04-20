@@ -22,9 +22,6 @@
     <Compile Include="..\MobileBarcodeScanner.netstandard.cs">
       <Link>MobileBarcodeScanner.netstandard.cs</Link>
     </Compile>
-    <Compile Include="..\MobileBarcodeScanner.shared.cs">
-      <Link>MobileBarcodeScanner.shared.cs</Link>
-    </Compile>
     <Compile Include="..\MobileBarcodeScanningOptions.shared.cs">
       <Link>MobileBarcodeScanningOptions.shared.cs</Link>
     </Compile>
@@ -36,6 +33,9 @@
     </Compile>
     <Compile Include="..\IScannerView.shared.cs">
       <Link>IScannerView.shared.cs</Link>
+    </Compile>
+    <Compile Include="..\MobileBarcodeScanner.shared.cs">
+      <Link>MobileBarcodeScanner.shared.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

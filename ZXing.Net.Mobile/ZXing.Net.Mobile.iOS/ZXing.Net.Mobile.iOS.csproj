@@ -84,9 +84,6 @@
     <Compile Include="..\iOS\ZXingScannerViewController.ios.cs">
       <Link>ZXingScannerViewController.ios.cs</Link>
     </Compile>
-    <Compile Include="..\MobileBarcodeScanner.shared.cs">
-      <Link>MobileBarcodeScanner.shared.cs</Link>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">

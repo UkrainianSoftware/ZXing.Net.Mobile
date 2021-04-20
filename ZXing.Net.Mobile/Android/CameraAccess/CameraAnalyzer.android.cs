@@ -4,6 +4,16 @@ using System.Threading.Tasks;
 using Android.Views;
 using ApxLabs.FastAndroidCamera;
 
+
+#if __FORK_FOR_ORION__
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.Droid.MobileBarcodeScannerDroid;
+#else
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
+
 namespace ZXing.Mobile.CameraAccess
 {
 	public class CameraAnalyzer
@@ -102,7 +112,7 @@ namespace ZXing.Mobile.CameraAccess
 			}).ContinueWith(task =>
 			{
 				if (task.IsFaulted)
-					Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "DecodeFrame exception occurs");
+					Android.Util.Log.Debug(MobileBarcodeScannerForDroidPlatform.TAG, "DecodeFrame exception occurs");
 			}, TaskContinuationOptions.OnlyOnFaulted);
 		}
 
@@ -146,7 +156,7 @@ namespace ZXing.Mobile.CameraAccess
 
 			if (result != null)
 			{
-				Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "Barcode Found");
+				Android.Util.Log.Debug(MobileBarcodeScannerForDroidPlatform.TAG, "Barcode Found");
 
 				wasScanned = true;
 				BarcodeFound?.Invoke(result);

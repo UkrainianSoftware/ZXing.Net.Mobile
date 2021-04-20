@@ -2,6 +2,14 @@
 using Android.Hardware;
 using ApxLabs.FastAndroidCamera;
 
+#if __FORK_FOR_ORION__
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Droid.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.Droid.MobileBarcodeScannerDroid;
+#else
+  using ZxingMobileAndroidResource = ZXing.Net.Mobile.Resource;
+  using MobileBarcodeScannerForDroidPlatform = ZXing.Mobile.MobileBarcodeScanner;
+#endif
+
 namespace ZXing.Mobile.CameraAccess
 {
 	public class CameraEventsListener : Java.Lang.Object, INonMarshalingPreviewCallback, Camera.IAutoFocusCallback
@@ -20,7 +28,7 @@ namespace ZXing.Mobile.CameraAccess
 
 		public void OnAutoFocus(bool success, Camera camera)
 		{
-			Android.Util.Log.Debug(MobileBarcodeScanner.TAG, "AutoFocus {0}", success ? "Succeeded" : "Failed");
+			Android.Util.Log.Debug(MobileBarcodeScannerForDroidPlatform.TAG, "AutoFocus {0}", success ? "Succeeded" : "Failed");
 		}
 	}
 }
