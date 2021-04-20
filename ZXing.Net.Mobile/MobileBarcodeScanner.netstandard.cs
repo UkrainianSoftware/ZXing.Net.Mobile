@@ -7,16 +7,46 @@ namespace ZXing.Mobile
 	{
 		NotSupportedException ex = new NotSupportedException("MobileBarcodeScanner is unsupported on this platform.");
 
-		// TODO: [alex-d] [xm-899] Need to redirect these calls to a proper native class
-		//		 does not happen automatically when `partial class` parts are ...
-		//		 are in different `.csproj` (and hence `.dll`)
-		// ---
-		// Note: class name cannot be changed as it is used by app codebase
-		//		 so it should remain `MobileBarcodeScanner`
-		//		 it should be ok to change names/namespaces in ios/droid csproj
-        //		 with `#if __FORK_FOR_ORION__` flags
-		// Without the flag the code should remain the same (ideally)
-		// -
+#if __FORK_FOR_ORION__
+		public static IMobileBarcodeScannerFactory PlatformScannerFactory { get; set; }
+		private readonly PlatformMobileBarcodeScannerBase _platformScanner;
+
+		public MobileBarcodeScanner()
+        {
+			_platformScanner = PlatformScannerFactory?.CreatePlafrormScanner()
+				?? throw new System.ArgumentNullException(nameof(PlatformScannerFactory));
+		}
+
+		Task<Result> PlatformScan(MobileBarcodeScanningOptions options)
+			=> _platformScanner.PlatformScan(options);
+
+		void PlatformScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
+			=> _platformScanner.PlatformScanContinuously(options, scanHandler);
+
+		void PlatformCancel()
+			=> _platformScanner.PlatformCancel();
+
+		void PlatformAutoFocus()
+			=> _platformScanner.PlatformAutoFocus();
+
+		void PlatformTorch(bool on)
+		{
+			bool shouldEnableTorch = on;
+			_platformScanner.PlatformTorch(on: shouldEnableTorch);
+		}
+
+		void PlatformToggleTorch()
+			=> _platformScanner.PlatformToggleTorch();
+
+		void PlatformPauseAnalysis()
+			=> _platformScanner.PlatformPauseAnalysis();
+
+		void PlatformResumeAnalysis()
+			=> _platformScanner.PlatformResumeAnalysis();
+
+		bool PlatformIsTorchOn
+			=> _platformScanner.PlatformIsTorchOn;
+#else
 		Task<Result> PlatformScan(MobileBarcodeScanningOptions options)
 			=> throw ex;
 
@@ -43,5 +73,6 @@ namespace ZXing.Mobile
 
 		bool PlatformIsTorchOn
 			=> throw ex;
+#endif
 	}
 }

@@ -97,6 +97,7 @@
       <Link>CameraAccess\CameraAnalyzer.android.cs</Link>
     </Compile>
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="MobileBarcodeScannerFactoryDroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

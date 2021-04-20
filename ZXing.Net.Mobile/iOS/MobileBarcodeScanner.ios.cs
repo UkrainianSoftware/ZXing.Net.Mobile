@@ -9,7 +9,7 @@ using UIKit;
 
 
 #if __FORK_FOR_ORION__
-	using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.Ios.MobileBarcodeScannerIos;
+  using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.Ios.MobileBarcodeScannerIos;
 #else
   using MobileBarcodeScannerForIosPlatform = ZXing.Mobile.MobileBarcodeScanner;
 #endif
@@ -19,7 +19,7 @@ using UIKit;
 #if __FORK_FOR_ORION__
 namespace ZXing.Mobile.Ios
 {
-	public class MobileBarcodeScannerIos : MobileBarcodeScannerBase
+	public class MobileBarcodeScannerIos : PlatformMobileBarcodeScannerBase
 	{
 		public MobileBarcodeScannerIos(UIViewController delegateController)
 		{
@@ -48,15 +48,21 @@ namespace ZXing.Mobile
 		readonly WeakReference<UIViewController> weakAppController;
 		readonly ManualResetEvent scanResultResetEvent = new ManualResetEvent(false);
 
-		
 
 		public Task<Result> Scan(bool useAVCaptureEngine)
 			=> Scan(new MobileBarcodeScanningOptions(), useAVCaptureEngine);
 
 
+#if __FORK_FOR_ORION__
+	    public override
+#endif
 		Task<Result> PlatformScan(MobileBarcodeScanningOptions options)
 			=> Scan(options, false);
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
 			=> InternalScanContinuously(options, false, scanHandler);
 
@@ -200,6 +206,10 @@ namespace ZXing.Mobile
 			}
 		});
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformCancel()
 		{
 			if (viewController != null)
@@ -216,69 +226,50 @@ namespace ZXing.Mobile
 			scanResultResetEvent.Set();
 		}
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformTorch(bool on)
 			=> viewController?.Torch(on);
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformToggleTorch()
 			=> viewController?.ToggleTorch();
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformAutoFocus()
 		{
 			//Does nothing on iOS
 		}
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformPauseAnalysis()
 			=> viewController?.PauseAnalysis();
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		void PlatformResumeAnalysis()
 			=> viewController?.ResumeAnalysis();
 
+
+#if __FORK_FOR_ORION__
+		public override
+#endif
 		bool PlatformIsTorchOn
 			=> viewController.IsTorchOn;
 
 		public UIView CustomOverlay { get; set; }
-
-
-
-#if __FORK_FOR_ORION__
-		// Note: [alex-d] [xm-899] cannot inherit from MobileBarcodeScanner
-		//		 since app uses ```new MobileBarcodeScanner()``` constructor
-		// the methods are simple enough, so we can compromise DRY principle
-		// ...this time
-		// ---
-		// otherwise the fork will be too different from original zxing
-		// which might cause issues during merge/upgrade of the lib
-		// ---
-		// probably could use more pre-processor magic
-		// but it's already getting somewhat complex
-		// -
-
-		public override Task<Result> Scan(MobileBarcodeScanningOptions options)
-			=> PlatformScan(options);
-
-		public override void ScanContinuously(MobileBarcodeScanningOptions options, Action<Result> scanHandler)
-			=> PlatformScanContinuously(options, scanHandler);
-
-		public override void Cancel()
-			=> PlatformCancel();
-
-		public override void AutoFocus()
-			=> PlatformAutoFocus();
-
-		public override void Torch(bool on)
-			=> PlatformTorch(on);
-
-		public override void ToggleTorch()
-			=> PlatformToggleTorch();
-
-		public override void PauseAnalysis()
-			=> PlatformPauseAnalysis();
-
-		public override void ResumeAnalysis()
-			=> PlatformResumeAnalysis();
-
-		public override bool IsTorchOn
-			=> PlatformIsTorchOn;
-#endif
 	}
 }
