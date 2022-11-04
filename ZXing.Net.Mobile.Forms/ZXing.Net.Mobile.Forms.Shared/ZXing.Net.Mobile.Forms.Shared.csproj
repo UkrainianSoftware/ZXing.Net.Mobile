@@ -33,14 +33,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="ZXing.Net" Version="0.16.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="ZXing.Net" />
   </ItemGroup>
 </Project>

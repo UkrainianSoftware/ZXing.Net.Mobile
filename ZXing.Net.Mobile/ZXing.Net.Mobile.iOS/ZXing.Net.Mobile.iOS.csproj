@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -105,6 +102,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.6.1</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net">
+      <Version>0.16.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

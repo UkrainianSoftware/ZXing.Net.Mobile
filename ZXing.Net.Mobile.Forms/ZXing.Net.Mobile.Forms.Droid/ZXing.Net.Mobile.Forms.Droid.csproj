@@ -57,9 +57,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -89,6 +86,9 @@
     </PackageReference>
     <PackageReference Include="NuGet.Packaging">
       <Version>5.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net">
+      <Version>0.16.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

@@ -120,7 +120,7 @@ namespace ZXing.Mobile
 			ResumeAnalysisHandler = scannerFragment.ResumeAnalysis;
 		}
 
-		protected override async void OnResume()
+		protected override void OnResume()
 		{
 			base.OnResume();
 
@@ -128,18 +128,26 @@ namespace ZXing.Mobile
 			StartScanning();
 		}
 
-		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
-			=> Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+		public override void OnRequestPermissionsResult(
+			int requestCode,
+			string[] permissions,
+			[GeneratedEnum] Permission[] grantResults)
+		=> Xamarin.Essentials.Platform.OnRequestPermissionsResult(
+			requestCode,
+			permissions,
+			grantResults);
 
 		void StartScanning()
 		{
-			scannerFragment.StartScanning(result =>
-			{
-				ScanCompletedHandler?.Invoke(result);
+			scannerFragment.StartScanning(
+				scanResultHandler: (result) =>
+				{
+					ScanCompletedHandler?.Invoke(result);
 
-				if (!ZxingActivity.ScanContinuously)
-					Finish();
-			}, ScanningOptions);
+					if (!ZxingActivity.ScanContinuously)
+						Finish();
+				},
+				options: ScanningOptions);
 		}
 
 		public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)

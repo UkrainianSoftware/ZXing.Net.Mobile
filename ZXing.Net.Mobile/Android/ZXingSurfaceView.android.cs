@@ -10,15 +10,19 @@ namespace ZXing.Mobile
 {
 	public class ZXingSurfaceView : SurfaceView, ISurfaceHolderCallback, IScannerView, IScannerSessionHost
 	{
-		public ZXingSurfaceView(Context context, MobileBarcodeScanningOptions options)
-			: base(context)
+		public ZXingSurfaceView(
+			Context context,
+			MobileBarcodeScanningOptions options)
+		: base(context)
 		{
 			ScanningOptions = options ?? new MobileBarcodeScanningOptions();
 			Init();
 		}
 
-		protected ZXingSurfaceView(IntPtr javaReference, JniHandleOwnership transfer)
-			: base(javaReference, transfer) => Init();
+		protected ZXingSurfaceView(
+			IntPtr javaReference,
+			JniHandleOwnership transfer)
+		: base(javaReference, transfer) => Init();
 
 		bool addedHolderCallback = false;
 
@@ -46,8 +50,12 @@ namespace ZXing.Mobile
 			surfaceCreated = true;
 		}
 
-		public async void SurfaceChanged(ISurfaceHolder holder, Format format, int wx, int hx)
-			=> cameraAnalyzer.RefreshCamera();
+		public async void SurfaceChanged(
+			ISurfaceHolder holder,
+			Format format,
+			int wx,
+			int hx)
+		=> cameraAnalyzer.RefreshCamera();
 
 		public async void SurfaceDestroyed(ISurfaceHolder holder)
 		{
@@ -88,14 +96,18 @@ namespace ZXing.Mobile
 		public void AutoFocus(int x, int y)
 			=> cameraAnalyzer.AutoFocus(x, y);
 
-		public void StartScanning(Action<Result> scanResultCallback, MobileBarcodeScanningOptions options = null)
+		public void StartScanning(
+			Action<Result> scanResultCallback,
+			MobileBarcodeScanningOptions options = null)
 		{
 			cameraAnalyzer.SetupCamera();
 
 			ScanningOptions = options ?? MobileBarcodeScanningOptions.Default;
 
 			cameraAnalyzer.BarcodeFound = (result) =>
+			{
 				scanResultCallback?.Invoke(result);
+			};
 			cameraAnalyzer.ResumeAnalysis();
 		}
 

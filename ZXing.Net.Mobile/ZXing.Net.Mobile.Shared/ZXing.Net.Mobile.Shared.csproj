@@ -46,8 +46,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
+    <None Remove="ZXing.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ZXing.Net" Version="0.16.8" />
   </ItemGroup>
 </Project>

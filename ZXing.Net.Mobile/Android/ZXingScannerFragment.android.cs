@@ -127,7 +127,9 @@ namespace ZXing.Mobile
 
 		Action<Result> scanCallback;
 
-		public void StartScanning(Action<Result> scanResultHandler, MobileBarcodeScanningOptions options = null)
+		public void StartScanning(
+			Action<Result> scanResultHandler,
+			MobileBarcodeScanningOptions options = null)
 		{
 			ScanningOptions = options;
 			scanCallback = scanResultHandler;
