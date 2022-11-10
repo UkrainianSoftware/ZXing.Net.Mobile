@@ -46,8 +46,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\ZXing.Base\ZXing.Netstandard20\ZXing.Netstandard20.csproj" />
   </ItemGroup>
 </Project>

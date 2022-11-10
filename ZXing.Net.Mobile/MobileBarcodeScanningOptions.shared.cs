@@ -58,36 +58,64 @@ namespace ZXing.Mobile
 			get { return new MobileBarcodeScanningOptions(); }
 		}
 
-		public BarcodeReader BuildBarcodeReader()
-		{
-			var reader = new BarcodeReader();
-			if (TryHarder.HasValue)
-				reader.Options.TryHarder = TryHarder.Value;
-			if (PureBarcode.HasValue)
-				reader.Options.PureBarcode = PureBarcode.Value;
-			if (AutoRotate.HasValue)
-				reader.AutoRotate = AutoRotate.Value;
-			if (UseCode39ExtendedMode.HasValue)
-				reader.Options.UseCode39ExtendedMode = UseCode39ExtendedMode.Value;
-			if (!string.IsNullOrEmpty(CharacterSet))
-				reader.Options.CharacterSet = CharacterSet;
-			if (TryInverted.HasValue)
-				reader.TryInverted = TryInverted.Value;
-			if (AssumeGS1.HasValue)
-				reader.Options.AssumeGS1 = AssumeGS1.Value;
+        //public BarcodeReader BuildBarcodeReader()
+        //{
+        //	var reader = new BarcodeReader();
+        //	if (TryHarder.HasValue)
+        //		reader.Options.TryHarder = TryHarder.Value;
+        //	if (PureBarcode.HasValue)
+        //		reader.Options.PureBarcode = PureBarcode.Value;
+        //	if (AutoRotate.HasValue)
+        //		reader.AutoRotate = AutoRotate.Value;
+        //	if (UseCode39ExtendedMode.HasValue)
+        //		reader.Options.UseCode39ExtendedMode = UseCode39ExtendedMode.Value;
+        //	if (!string.IsNullOrEmpty(CharacterSet))
+        //		reader.Options.CharacterSet = CharacterSet;
+        //	if (TryInverted.HasValue)
+        //		reader.TryInverted = TryInverted.Value;
+        //	if (AssumeGS1.HasValue)
+        //		reader.Options.AssumeGS1 = AssumeGS1.Value;
+        //
+        //	if (PossibleFormats?.Any() ?? false)
+        //	{
+        //		reader.Options.PossibleFormats = new List<BarcodeFormat>();
+        //
+        //		foreach (var pf in PossibleFormats)
+        //			reader.Options.PossibleFormats.Add(pf);
+        //	}
+        //
+        //	return reader;
+        //}
+        public BarcodeReaderGeneric BuildBarcodeReader()
+        {
+            var reader = new BarcodeReaderGeneric();
+            if (TryHarder.HasValue)
+                reader.Options.TryHarder = TryHarder.Value;
+            if (PureBarcode.HasValue)
+                reader.Options.PureBarcode = PureBarcode.Value;
+            if (AutoRotate.HasValue)
+                reader.AutoRotate = AutoRotate.Value;
+            if (UseCode39ExtendedMode.HasValue)
+                reader.Options.UseCode39ExtendedMode = UseCode39ExtendedMode.Value;
+            if (!string.IsNullOrEmpty(CharacterSet))
+                reader.Options.CharacterSet = CharacterSet;
+            if (TryInverted.HasValue)
+                reader.TryInverted = TryInverted.Value;
+            if (AssumeGS1.HasValue)
+                reader.Options.AssumeGS1 = AssumeGS1.Value;
 
-			if (PossibleFormats?.Any() ?? false)
-			{
-				reader.Options.PossibleFormats = new List<BarcodeFormat>();
+            if (PossibleFormats?.Any() ?? false)
+            {
+                reader.Options.PossibleFormats = new List<BarcodeFormat>();
 
-				foreach (var pf in PossibleFormats)
-					reader.Options.PossibleFormats.Add(pf);
-			}
+                foreach (var pf in PossibleFormats)
+                    reader.Options.PossibleFormats.Add(pf);
+            }
 
-			return reader;
-		}
+            return reader;
+        }
 
-		public MultiFormatReader BuildMultiFormatReader()
+        public MultiFormatReader BuildMultiFormatReader()
 		{
 			var reader = new MultiFormatReader();
 

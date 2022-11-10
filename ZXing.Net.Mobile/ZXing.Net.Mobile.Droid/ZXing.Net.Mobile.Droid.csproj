@@ -59,9 +59,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +140,10 @@
     <ProjectReference Include="..\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj">
       <Project>{AEEF21CA-F2FF-4D45-A266-87E674C2AE25}</Project>
       <Name>ZXing.Net.Mobile.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ZXing.Base\ZXing.Netstandard20\ZXing.Netstandard20.csproj">
+      <Project>{D567A0EB-EB1F-4748-9BBE-288CF90FA0F9}</Project>
+      <Name>ZXing.Netstandard20</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

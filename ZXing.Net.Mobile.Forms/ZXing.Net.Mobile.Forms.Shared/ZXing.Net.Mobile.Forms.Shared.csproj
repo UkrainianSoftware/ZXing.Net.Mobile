@@ -33,11 +33,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="zxing">
-      <HintPath>..\..\ZXing.Net\zxing.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\ZXing.Net.Mobile\ZXing.Net.Mobile.Shared\ZXing.Net.Mobile.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
