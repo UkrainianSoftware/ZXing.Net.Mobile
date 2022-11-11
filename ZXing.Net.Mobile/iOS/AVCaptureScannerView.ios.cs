@@ -13,7 +13,7 @@ using CoreVideo;
 using ObjCRuntime;
 using UIKit;
 
-using ZXing.Common;
+//using ZXing.Common;
 using ZXing.Mobile;
 
 namespace ZXing.Mobile

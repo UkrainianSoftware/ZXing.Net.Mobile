@@ -82,6 +82,12 @@
       <Project>{9A8CCA9C-2C2A-4F7F-BB99-486FF5B3A129}</Project>
       <Name>ZXing.Net.Mobile.Forms.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\ZXing.Base\ZXing.Netstandard20\ZXing.Netstandard20.csproj">
+      <Name>ZXing.Netstandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ZXing.Base\zxing.ios\zxing.ios.csproj">
+      <Name>zxing.ios</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
 <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />

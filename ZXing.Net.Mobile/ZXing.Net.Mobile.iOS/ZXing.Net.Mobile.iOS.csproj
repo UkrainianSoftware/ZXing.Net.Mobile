@@ -98,6 +98,12 @@
       <Project>{AEEF21CA-F2FF-4D45-A266-87E674C2AE25}</Project>
       <Name>ZXing.Net.Mobile.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\ZXing.Base\ZXing.Netstandard20\ZXing.Netstandard20.csproj">
+      <Name>ZXing.Netstandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ZXing.Base\zxing.ios\zxing.ios.csproj">
+      <Name>zxing.ios</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Essentials">

@@ -84,9 +84,15 @@ namespace ZXing.Net.Mobile.Forms.iOS
 					break;
 				case nameof(ZXingScannerView.IsScanning):
 					if (formsView.IsScanning)
-						zxingView.StartScanning(formsView.RaiseScanResult, formsView.Options);
+					{
+						zxingView.StartScanning(
+                            scanResultHandler: (r) => formsView.RaiseScanResult(r),
+							options: formsView.Options);
+					}
 					else
+					{
 						zxingView.StopScanning();
+					}
 					break;
 				case nameof(ZXingScannerView.IsAnalyzing):
 					if (formsView.IsAnalyzing)
